@@ -3,27 +3,27 @@
 namespace Database\Seeders;
 
 use App\Models\Inventory;
-use App\Models\Book;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class InventorySeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     */
     public function run(): void
     {
-        // Get all books
-        $books = Book::all();
+        $inventories = [
+            ['book_id' => 1, 'location' => 'Shelf 1', 'availability_status' => true],
+            ['book_id' => 2, 'location' => 'Shelf 2', 'availability_status' => true],
+            ['book_id' => 3, 'location' => 'Shelf 3', 'availability_status' => false],
+            ['book_id' => 4, 'location' => 'Shelf 4', 'availability_status' => true],
+            ['book_id' => 5, 'location' => 'Shelf 5', 'availability_status' => false],
+            ['book_id' => 6, 'location' => 'Shelf 6', 'availability_status' => true],
+            ['book_id' => 7, 'location' => 'Shelf 7', 'availability_status' => true],
+            ['book_id' => 8, 'location' => 'Shelf 8', 'availability_status' => false],
+            ['book_id' => 9, 'location' => 'Shelf 9', 'availability_status' => true],
+            ['book_id' => 10, 'location' => 'Shelf 10', 'availability_status' => true]
+        ];
 
-        // Create inventory records for each book
-        foreach ($books as $book) {
-            Inventory::create([
-                'book_id' => $book->id,
-                'location' => 'Shelf ' . rand(1, 10),
-                'availability_status' => rand(0, 1) ? true : false,
-            ]);
+        foreach ($inventories as $inventoryData) {
+            Inventory::create($inventoryData);
         }
     }
 }
